@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import com.teknasyon.relaxingsong.Base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
+import com.teknasyon.relaxingsong.dependencyinjection.ActivityScoped;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -16,7 +19,11 @@ import butterknife.ButterKnife;
  * Created by anilkara on 13.10.2018.
  */
 
+@ActivityScoped
 public class FavoritesFragment extends BaseFragment {
+
+    @Inject
+    FavoritesFragment favoritesFragment;
 
     @Nullable
     @Override
@@ -26,5 +33,4 @@ public class FavoritesFragment extends BaseFragment {
         ButterKnife.bind(this, root);
         return root;
     }
-
 }
