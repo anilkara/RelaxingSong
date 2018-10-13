@@ -40,4 +40,5 @@ ext{
     rxandroid = "2.0.1"
     rxjava = "2.1.10"
     daggerVersion = "2.11"
+    butterknife = "8.8.1"
 }
