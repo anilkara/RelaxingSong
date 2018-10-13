@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RelaxingSong</string>
+
+    //Main layout texts
+    <string name="favourites_text">Favoriler</string>
+    <string name="library_text">Kitaplık</string>
+
+
 </resources>

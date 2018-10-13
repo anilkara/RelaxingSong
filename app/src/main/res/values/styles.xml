@@ -9,7 +9,7 @@
     </style>
 
     <!-- Default Text Style-->
-    <style name="DefaultTextStyle" >
+    <style name="DefaultTextStyle"  parent="@android:style/TextAppearance" >
         <item name="android:color">@color/main_text_color</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>

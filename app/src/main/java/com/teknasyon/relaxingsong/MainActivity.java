@@ -1,13 +1,29 @@
 package com.teknasyon.relaxingsong;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.fl_fragment_container)
+    FrameLayout fragmentContainer;
+
+    @BindView(R.id.tv_my_favourites)
+    TextView favouritesTextView;
+
+    @BindView(R.id.tv_my_libraries)
+    TextView librariesTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
     }
 }
