@@ -1,4 +1,4 @@
-package com.teknasyon.relaxingsong.Base;
+package com.teknasyon.relaxingsong.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

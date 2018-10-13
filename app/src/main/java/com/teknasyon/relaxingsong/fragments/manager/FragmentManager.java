@@ -3,7 +3,7 @@ package com.teknasyon.relaxingsong.fragments.manager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
-import com.teknasyon.relaxingsong.Base.BaseFragment;
+import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.fragments.FragmentName;
 import com.teknasyon.relaxingsong.fragments.factory.FragmentFactory;

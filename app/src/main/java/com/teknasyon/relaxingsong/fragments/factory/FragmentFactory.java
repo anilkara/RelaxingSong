@@ -2,7 +2,7 @@ package com.teknasyon.relaxingsong.fragments.factory;
 
 import android.content.Context;
 
-import com.teknasyon.relaxingsong.Base.BaseFragment;
+import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.fragments.FragmentName;
 import com.teknasyon.relaxingsong.fragments.favourites.FavoritesFragment;

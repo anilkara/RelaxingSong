@@ -1,7 +1,9 @@
 package com.teknasyon.relaxingsong.fragments.favourites;
 
 import com.teknasyon.relaxingsong.dependencyinjection.FragmentScoped;
+import com.teknasyon.relaxingsong.fragments.FragmentName;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -15,4 +17,10 @@ public abstract class FavouritesModule {
     @FragmentScoped
     @ContributesAndroidInjector
     abstract FavoritesFragment getFavoritesFragment();
+
+
+    @FragmentScoped
+    @Binds
+    abstract FavouritesContract.Presenter getFavoritesPresenter(FavouritesPresenter presenter);
+
 }

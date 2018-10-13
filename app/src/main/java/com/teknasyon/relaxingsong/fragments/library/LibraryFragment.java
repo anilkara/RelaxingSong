@@ -7,9 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.teknasyon.relaxingsong.Base.BaseFragment;
+import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
-import com.teknasyon.relaxingsong.fragments.favourites.FavoritesFragment;
 
 import javax.inject.Inject;
 

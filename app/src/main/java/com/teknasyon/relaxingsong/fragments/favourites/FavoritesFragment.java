@@ -6,13 +6,15 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.teknasyon.relaxingsong.Base.BaseFragment;
+import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.dependencyinjection.ActivityScoped;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -20,10 +22,13 @@ import butterknife.ButterKnife;
  */
 
 @ActivityScoped
-public class FavoritesFragment extends BaseFragment {
+public class FavoritesFragment extends BaseFragment  implements FavouritesContract.View {
+
+    @BindView(R.id.tv_main_text)
+    TextView mainTextView;
 
     @Inject
-    FavoritesFragment favoritesFragment;
+    FavouritesPresenter mPresenter;
 
     @Nullable
     @Override
@@ -31,6 +36,27 @@ public class FavoritesFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_favourites, container, false);
         ButterKnife.bind(this, root);
+        mPresenter.takeView(this); // to initialize view for presenter
+        mPresenter.init();
+
         return root;
+    }
+
+    @Override
+    public void showServerError(String errorMessage) {
+        //todo will be implemented after dialog builder create.
+    }
+
+    @Override
+    public void onInit() {
+        mainTextView.setText("ddd");
+        // will be implemented view operations
+    }
+
+    @Override
+    public void onDestroy() {
+        // to remove view from presenter
+        mPresenter.dropView();
+        super.onDestroy();
     }
 }
