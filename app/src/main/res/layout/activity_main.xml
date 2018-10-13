@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.teknasyon.relaxingsong.MainActivity">
+    
+    <FrameLayout
+        android:id="@+id/fl_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_navigation_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_my_favourites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DefaultTextStyle"
+            android:gravity="center"
+            android:layout_weight="1"
+            tools:text="Favoriler"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:background="@color/colorPrimary"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_my_libraries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DefaultTextStyle"
+            android:gravity="center"
+            android:layout_weight="1"
+            tools:text="Kitaplık"/>
+
+    </LinearLayout>
+
+</LinearLayout>
