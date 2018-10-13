@@ -19,10 +19,10 @@ import butterknife.ButterKnife;
  */
 
 
-public class LibraryFragment extends BaseFragment {
+public class LibraryFragment extends BaseFragment implements LibraryContract.View{
 
     @Inject
-    LibraryFragment favoritesFragment;
+    LibraryPresenter mPresenter;
 
     @Nullable
     @Override
@@ -33,4 +33,20 @@ public class LibraryFragment extends BaseFragment {
         return root;
     }
 
+    @Override
+    public void showServerError(String errorMessage) {
+        //todo will be implemented after dialog builder create.
+    }
+
+    @Override
+    public void onInit() {
+        // will be implemented view operations
+    }
+
+    @Override
+    public void onDestroy() {
+        // to remove view from presenter
+        mPresenter.dropView();
+        super.onDestroy();
+    }
 }
