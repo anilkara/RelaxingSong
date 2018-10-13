@@ -38,6 +38,7 @@ public class FavoritesFragment extends BaseFragment  implements FavouritesContra
         ButterKnife.bind(this, root);
         mPresenter.takeView(this); // to initialize view for presenter
         mPresenter.init();
+        mPresenter.callFavouriteList();
 
         return root;
     }
@@ -51,6 +52,11 @@ public class FavoritesFragment extends BaseFragment  implements FavouritesContra
     public void onInit() {
         mainTextView.setText("ddd");
         // will be implemented view operations
+    }
+
+    @Override
+    public void onSuccessFulFavouriteList() {
+
     }
 
     @Override

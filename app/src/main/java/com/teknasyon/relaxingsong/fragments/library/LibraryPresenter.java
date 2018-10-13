@@ -9,8 +9,8 @@ import javax.inject.Inject;
  * Created by anilkara on 13.10.2018.
  */
 
-public class LibraryPresenter extends AbstractPresenter<FavouritesContract.View>
-        implements FavouritesContract.Presenter {
+public class LibraryPresenter extends AbstractPresenter<LibraryContract.View>
+        implements LibraryContract.Presenter {
 
     @Inject
     LibraryPresenter() {

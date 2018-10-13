@@ -12,10 +12,14 @@ public interface FavouritesContract {
     interface View extends BaseView<FavouritesContract.Presenter> {
 
         void onInit();
+
+        void onSuccessFulFavouriteList();
     }
 
     interface Presenter extends BasePresenter<FavouritesContract.View> {
         void init();
+
+        void callFavouriteList();
     }
 
 }

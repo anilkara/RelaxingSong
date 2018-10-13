@@ -3,6 +3,11 @@ package com.teknasyon.relaxingsong.dependencyinjection;
 import android.app.Application;
 
 import com.teknasyon.relaxingsong.MainApplication;
+import com.teknasyon.relaxingsong.data.RetrofitClient;
+import com.teknasyon.relaxingsong.dependencyinjection.module.ActivityBindingModule;
+import com.teknasyon.relaxingsong.dependencyinjection.module.InformationManagerModule;
+import com.teknasyon.relaxingsong.dependencyinjection.module.RetrofitClientModule;
+import com.teknasyon.relaxingsong.manager.InformationManager;
 
 import javax.inject.Singleton;
 
@@ -20,15 +25,22 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(modules = {
         AndroidSupportInjectionModule.class,
         ActivityBindingModule.class,
+        InformationManagerModule.class,
+        RetrofitClientModule.class
 })
 
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
     void inject(MainApplication application);
 
+    void inject(InformationManagerModule informationManagerModule);
+
+    void inject(RetrofitClientModule retrofitClientModule);
+
 
     @Override
     void inject(DaggerApplication instance);
+
 
     // Gives us syntactic sugar. we can then do DaggerAppComponent.builder().application(this).build().inject(this);
     // never having to instantiate any modules or say which module we are passing the application to.
@@ -38,6 +50,10 @@ public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
         @BindsInstance
         AppComponent.Builder application(Application application);
+
+        AppComponent.Builder informationManagerModule(InformationManagerModule informationManagerModule);
+
+        AppComponent.Builder retrofitClientModule(RetrofitClientModule retrofitClientModule);
 
         AppComponent build();
     }
