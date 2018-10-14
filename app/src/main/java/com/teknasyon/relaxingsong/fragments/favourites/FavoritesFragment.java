@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
+import com.teknasyon.relaxingsong.base.BaseFragment;
+import com.teknasyon.relaxingsong.customviews.LoadableView;
+import com.teknasyon.relaxingsong.data.model.RelaxingSong;
 import com.teknasyon.relaxingsong.dependencyinjection.ActivityScoped;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,10 +26,13 @@ import butterknife.ButterKnife;
  */
 
 @ActivityScoped
-public class FavoritesFragment extends BaseFragment  implements FavouritesContract.View {
+public class FavoritesFragment extends BaseFragment implements FavouritesContract.View {
 
     @BindView(R.id.tv_main_text)
     TextView mainTextView;
+
+    @BindView(R.id.lv_favourites)
+    LoadableView favouritesLoadableView;
 
     @Inject
     FavouritesPresenter mPresenter;
@@ -39,7 +46,6 @@ public class FavoritesFragment extends BaseFragment  implements FavouritesContra
         mPresenter.takeView(this); // to initialize view for presenter
         mPresenter.init();
         mPresenter.callFavouriteList();
-
         return root;
     }
 
@@ -55,8 +61,14 @@ public class FavoritesFragment extends BaseFragment  implements FavouritesContra
     }
 
     @Override
-    public void onSuccessFulFavouriteList() {
+    public void onSuccessFulFavouriteList(List<RelaxingSong> relaxingSongList) {
+        favouritesLoadableView.showContent();
+    }
 
+    // shows loading view or not
+    @Override
+    public void setLoadingView() {
+        favouritesLoadableView.showLoading();
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.teknasyon.relaxingsong.fragments.favourites;
 
-import android.widget.Toast;
-
 import com.teknasyon.relaxingsong.base.AbstractPresenter;
-import com.teknasyon.relaxingsong.data.APIService;
 import com.teknasyon.relaxingsong.data.RetrofitClient;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
 import com.teknasyon.relaxingsong.manager.InformationManager;
@@ -34,6 +31,8 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
     FavouritesPresenter() {
     }
 
+    private List<RelaxingSong> relaxingSongList;
+
     @Override
     public void init() {
         if (getView() == null) return;
@@ -42,6 +41,8 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
 
     @Override
     public void callFavouriteList() {
+        if (getView() == null) return;
+        getView().setLoadingView();
 
         retrofitClient.getRetrofitService().getFavouriteList()
                 .subscribeOn(Schedulers.io())
@@ -54,6 +55,7 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
 
                                @Override
                                public void onNext(List<RelaxingSong> relaxingSongs) {
+                                   relaxingSongList = relaxingSongs;
                                }
 
                                @Override
@@ -63,6 +65,9 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
 
                                @Override
                                public void onComplete() {
+                                   if (getView() != null){
+                                       getView().onSuccessFulFavouriteList(relaxingSongList);
+                                   }
                                }
                            }
                 );

@@ -2,8 +2,6 @@ package com.teknasyon.relaxingsong.data;
 
 import android.content.Context;
 
-import com.teknasyon.relaxingsong.manager.InformationManager;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -25,12 +23,12 @@ public class RetrofitClient {
         this.context = context;
     }
 
-    private final static String BASE_URL = "https://dl.dropboxusercontent.com/s/ptfl4iydhk026qx/"; // will be handled.
+    private final static String BASE_URL = "https://dl.dropboxusercontent.com/s/ptfl4iydhk026qx/";
 
-    private static Retrofit retrofit = null;
-    private static APIService apiService = null;
+    private  Retrofit retrofit = null;
+    private  APIService apiService = null;
 
-    public static Retrofit getClient(Context context) {
+    private void getClient(Context context) {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
@@ -38,7 +36,6 @@ public class RetrofitClient {
                     .baseUrl(BASE_URL)
                     .build();
         }
-        return retrofit;
     }
 
     public APIService getRetrofitService(){

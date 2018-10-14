@@ -13,8 +13,7 @@ import retrofit2.http.GET;
 
 public interface APIService {
 
-    @GET("relaxingsongs.json?dl=0/")
+    @GET("favourites.json?dl=0/")
     Observable<List<RelaxingSong>> getFavouriteList();
-
 
 }
