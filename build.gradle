@@ -41,4 +41,5 @@ ext{
     rxjava = "2.1.10"
     daggerVersion = "2.11"
     butterknife = "8.8.1"
+    picasso = "2.71828"
 }

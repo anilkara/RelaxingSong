@@ -7,4 +7,8 @@
     <color name="main_text_color">#505050</color>
     <color name="divider_color">#bcbcbc</color>
 
+    <color name="waiting_background_color">#fff9c4</color>
+    <color name="error_background_color">#ffccbc</color>
+    <color name="white">#ffffff</color>
+
 </resources>

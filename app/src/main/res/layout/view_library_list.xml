@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/list_item_height"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/margin_medium"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
 
+    <ImageView
+        android:id="@+id/iv_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/content_description"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_category_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/DefaultTextStyle"
-        android:layout_gravity="center"/>
+        style="@style/BoldtTextStyle"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_gravity="bottom"
+        tools:text="text"/>
 
 
 </android.support.v7.widget.CardView>

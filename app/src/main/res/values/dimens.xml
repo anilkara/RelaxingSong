@@ -14,6 +14,6 @@
     <dimen name="margin_very_large">24dp</dimen>
 
     <dimen name="bottom_navigation_height">50dp</dimen>
-    <dimen name="list_item_height">50dp</dimen>
+    <dimen name="list_item_height">100dp</dimen>
 
 </resources>

@@ -14,4 +14,11 @@
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
+    <!-- Default Text Style-->
+    <style name="BoldtTextStyle"  parent="@android:style/TextAppearance" >
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
 </resources>

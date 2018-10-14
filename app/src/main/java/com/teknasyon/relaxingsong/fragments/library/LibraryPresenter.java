@@ -9,6 +9,7 @@ import com.teknasyon.relaxingsong.fragments.favourites.FavouritesContract;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -19,6 +20,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by anilkara on 13.10.2018.
  */
 
+@Singleton
 public class LibraryPresenter extends AbstractPresenter<LibraryContract.View>
         implements LibraryContract.Presenter {
 

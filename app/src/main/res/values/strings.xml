@@ -4,6 +4,7 @@
     //Main layout texts
     <string name="favourites_text">Favoriler</string>
     <string name="library_text">Kitaplık</string>
+    <string name="content_description">content_description</string>
 
 
 </resources>
