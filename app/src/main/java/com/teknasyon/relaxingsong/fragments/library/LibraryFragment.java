@@ -14,6 +14,7 @@ import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.customviews.LoadableView;
 import com.teknasyon.relaxingsong.data.model.LibraryResponse;
 import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
+import com.teknasyon.relaxingsong.fragments.library.adapter.LibraryListAdapter;
 
 import java.util.List;
 
@@ -38,6 +39,8 @@ public class LibraryFragment extends BaseFragment implements LibraryContract.Vie
     @Inject
     LibraryPresenter mPresenter;
 
+    private LibraryListAdapter libraryListAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -57,16 +60,16 @@ public class LibraryFragment extends BaseFragment implements LibraryContract.Vie
 
     @Override
     public void onInit() {
-        /*LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        favouriteListAdapter = new FavouriteListAdapter(getContext(), null);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        libraryListAdapter = new LibraryListAdapter(getContext(), null);
         libraryRecyclerView.setLayoutManager(linearLayoutManager);
-        libraryRecyclerView.setAdapter(favouriteListAdapter);*/
-
+        libraryRecyclerView.setAdapter(libraryListAdapter);
     }
 
     @Override
     public void onSuccessfulLibraryService(List<LibraryResponse> libraryResponseList) {
         librariesLoadableView.showContent();
+        libraryListAdapter.setLibraryResponseList(libraryResponseList);
     }
 
     @Override
