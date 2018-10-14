@@ -60,12 +60,10 @@ public class FavoritesFragment extends BaseFragment implements FavouritesContrac
 
     @Override
     public void onInit() {
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         favouriteListAdapter = new FavouriteListAdapter(getContext(), null);
         favouriteRecyclerView.setLayoutManager(linearLayoutManager);
         favouriteRecyclerView.setAdapter(favouriteListAdapter);
-
     }
 
     @Override

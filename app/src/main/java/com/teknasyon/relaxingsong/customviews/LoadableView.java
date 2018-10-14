@@ -20,7 +20,8 @@ import java.util.List;
  */
 
 /**
- * with this view each layout has async loadable ability
+ * with this view each layout has async loading ability
+ * this view enable non blocking ui views
  */
 public class LoadableView extends FrameLayout {
 

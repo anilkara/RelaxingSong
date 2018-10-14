@@ -2,6 +2,7 @@ package com.teknasyon.relaxingsong.fragments.library;
 
 import com.teknasyon.relaxingsong.dependencyinjection.FragmentScoped;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -15,4 +16,10 @@ public abstract class LibraryModule {
     @FragmentScoped
     @ContributesAndroidInjector
     abstract LibraryFragment getLibraryFragment();
+
+
+    @FragmentScoped
+    @Binds
+    abstract LibraryContract.Presenter getLibraryPresenter(LibraryPresenter presenter);
+
 }

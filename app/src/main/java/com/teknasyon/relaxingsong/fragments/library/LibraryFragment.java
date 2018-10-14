@@ -3,15 +3,23 @@ package com.teknasyon.relaxingsong.fragments.library;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
+import com.teknasyon.relaxingsong.customviews.LoadableView;
+import com.teknasyon.relaxingsong.data.model.LibraryResponse;
+import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -20,6 +28,12 @@ import butterknife.ButterKnife;
 
 
 public class LibraryFragment extends BaseFragment implements LibraryContract.View{
+
+    @BindView(R.id.rv_library_list)
+    RecyclerView libraryRecyclerView;
+
+    @BindView(R.id.lv_libraries)
+    LoadableView librariesLoadableView;
 
     @Inject
     LibraryPresenter mPresenter;
@@ -30,17 +44,34 @@ public class LibraryFragment extends BaseFragment implements LibraryContract.Vie
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_libraries, container, false);
         ButterKnife.bind(this, root);
+        mPresenter.takeView(this);
+        mPresenter.init();
+        mPresenter.callLibrariesService();
         return root;
     }
 
     @Override
     public void showServerError(String errorMessage) {
-        //todo will be implemented after dialog builder create.
+        librariesLoadableView.showError(errorMessage);
     }
 
     @Override
     public void onInit() {
-        // will be implemented view operations
+        /*LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        favouriteListAdapter = new FavouriteListAdapter(getContext(), null);
+        libraryRecyclerView.setLayoutManager(linearLayoutManager);
+        libraryRecyclerView.setAdapter(favouriteListAdapter);*/
+
+    }
+
+    @Override
+    public void onSuccessfulLibraryService(List<LibraryResponse> libraryResponseList) {
+        librariesLoadableView.showContent();
+    }
+
+    @Override
+    public void showLoadingView() {
+        librariesLoadableView.showLoading();
     }
 
     @Override

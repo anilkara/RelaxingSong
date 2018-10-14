@@ -6,7 +6,6 @@ import com.teknasyon.relaxingsong.dependencyinjection.AppComponent;
 import com.teknasyon.relaxingsong.dependencyinjection.DaggerAppComponent;
 import com.teknasyon.relaxingsong.dependencyinjection.module.InformationManagerModule;
 import com.teknasyon.relaxingsong.dependencyinjection.module.RetrofitClientModule;
-import com.teknasyon.relaxingsong.manager.InformationManager;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;

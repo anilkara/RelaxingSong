@@ -1,5 +1,6 @@
 package com.teknasyon.relaxingsong.data;
 
+import com.teknasyon.relaxingsong.data.model.LibraryResponse;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
 
 import java.util.List;
@@ -13,7 +14,10 @@ import retrofit2.http.GET;
 
 public interface APIService {
 
-    @GET("favourites.json?dl=0/")
+    @GET("ptfl4iydhk026qx/favourites.json?dl=0/")
     Observable<List<RelaxingSong>> getFavouriteList();
+
+    @GET("f7x49jahgub0wwd/libraries.json?dl=0")
+    Observable<List<LibraryResponse>> getLibraryList();
 
 }

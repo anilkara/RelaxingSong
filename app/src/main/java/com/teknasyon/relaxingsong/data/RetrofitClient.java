@@ -16,17 +16,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Singleton
 public class RetrofitClient {
 
+    private final static String BASE_URL = "https://dl.dropboxusercontent.com/s/";
     private Context context;
+    private Retrofit retrofit = null;
+    private APIService apiService = null;
 
     @Inject
-    public RetrofitClient(Context context){
+    public RetrofitClient(Context context) {
         this.context = context;
     }
-
-    private final static String BASE_URL = "https://dl.dropboxusercontent.com/s/ptfl4iydhk026qx/";
-
-    private  Retrofit retrofit = null;
-    private  APIService apiService = null;
 
     private void getClient(Context context) {
         if (retrofit == null) {
@@ -38,9 +36,9 @@ public class RetrofitClient {
         }
     }
 
-    public APIService getRetrofitService(){
+    public APIService getRetrofitService() {
 
-        if (retrofit == null){
+        if (retrofit == null) {
             getClient(context);
         }
 

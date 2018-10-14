@@ -25,9 +25,6 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
     RetrofitClient retrofitClient;
 
     @Inject
-    InformationManager informationManager;
-
-    @Inject
     FavouritesPresenter() {
     }
 
