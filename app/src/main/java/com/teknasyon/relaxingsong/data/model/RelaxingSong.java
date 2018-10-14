@@ -9,8 +9,8 @@ import com.google.gson.annotations.SerializedName;
 public class RelaxingSong {
 
     @SerializedName("name")
-    private String name;
+    public String name;
 
     @SerializedName("url")
-    private String url;
+    public String url;
 }

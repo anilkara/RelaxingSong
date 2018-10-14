@@ -3,16 +3,18 @@ package com.teknasyon.relaxingsong.fragments.favourites;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.customviews.LoadableView;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
 import com.teknasyon.relaxingsong.dependencyinjection.ActivityScoped;
+import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
 
 import java.util.List;
 
@@ -28,14 +30,16 @@ import butterknife.ButterKnife;
 @ActivityScoped
 public class FavoritesFragment extends BaseFragment implements FavouritesContract.View {
 
-    @BindView(R.id.tv_main_text)
-    TextView mainTextView;
+    @BindView(R.id.rv_favourite_list)
+    RecyclerView favouriteRecyclerView;
 
     @BindView(R.id.lv_favourites)
     LoadableView favouritesLoadableView;
 
     @Inject
     FavouritesPresenter mPresenter;
+
+    private FavouriteListAdapter favouriteListAdapter;
 
     @Nullable
     @Override
@@ -51,17 +55,22 @@ public class FavoritesFragment extends BaseFragment implements FavouritesContrac
 
     @Override
     public void showServerError(String errorMessage) {
-        //todo will be implemented after dialog builder create.
+        favouritesLoadableView.showError(errorMessage);
     }
 
     @Override
     public void onInit() {
-        mainTextView.setText("ddd");
-        // will be implemented view operations
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        favouriteListAdapter = new FavouriteListAdapter(getContext(), null);
+        favouriteRecyclerView.setLayoutManager(linearLayoutManager);
+        favouriteRecyclerView.setAdapter(favouriteListAdapter);
+
     }
 
     @Override
-    public void onSuccessFulFavouriteList(List<RelaxingSong> relaxingSongList) {
+    public void onSuccessFulFavouriteList(List<RelaxingSong> favouriteSongList) {
+        favouriteListAdapter.setFavouriteList(favouriteSongList);
         favouritesLoadableView.showContent();
     }
 
