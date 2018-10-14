@@ -1,5 +1,6 @@
 package com.teknasyon.relaxingsong.fragments.favourites;
 
+import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.base.AbstractPresenter;
 import com.teknasyon.relaxingsong.data.RetrofitClient;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
@@ -27,6 +28,9 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
     RetrofitClient retrofitClient;
 
     @Inject
+    InformationManager informationManager;
+
+    @Inject
     FavouritesPresenter() {
     }
 
@@ -43,6 +47,14 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
         if (getView() == null) return;
         getView().setLoadingView();
 
+        if (relaxingSongList != null && getView() != null){
+            if (relaxingSongList.isEmpty()){
+                getView().showInfoMessage(informationManager.getContext().getString(R.string.no_favourite_message));
+            } else {
+                getView().onSuccessFulFavouriteList(relaxingSongList);
+            }
+            return;
+        }
         retrofitClient.getRetrofitService().getFavouriteList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -70,5 +82,27 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
                                }
                            }
                 );
+    }
+
+    @Override
+    public void removeFavouriteSong(RelaxingSong relaxingSong) {
+        if (relaxingSongList != null) {
+            relaxingSongList.remove(relaxingSong);
+            if (relaxingSongList.isEmpty() && getView() != null){
+                getView().showInfoMessage(informationManager.getContext().getString(R.string.no_favourite_message));
+            } else if (getView() != null){
+                getView().onSuccessFulFavouriteList(relaxingSongList);
+            }
+        } else if (getView() != null){
+            getView().showInfoMessage(informationManager.getContext().getString(R.string.no_favourite_message));
+        }
+    }
+
+    public List<RelaxingSong> getRelaxingSongList() {
+        return relaxingSongList;
+    }
+
+    public void setRelaxingSongList(List<RelaxingSong> relaxingSongList) {
+        this.relaxingSongList = relaxingSongList;
     }
 }

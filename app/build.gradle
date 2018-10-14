@@ -58,7 +58,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife"
 
 
-    //Picasso dependencies
+    //Picasso dependency
     implementation "com.squareup.picasso:picasso:$rootProject.ext.picasso"
 
 }

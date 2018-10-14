@@ -28,7 +28,8 @@ import butterknife.ButterKnife;
  */
 
 @ActivityScoped
-public class FavoritesFragment extends BaseFragment implements FavouritesContract.View {
+public class FavoritesFragment extends BaseFragment implements FavouritesContract.View,
+        OnFavouriteAdapterListener{
 
     @BindView(R.id.rv_favourite_list)
     RecyclerView favouriteRecyclerView;
@@ -61,7 +62,7 @@ public class FavoritesFragment extends BaseFragment implements FavouritesContrac
     @Override
     public void onInit() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        favouriteListAdapter = new FavouriteListAdapter(getContext(), null);
+        favouriteListAdapter = new FavouriteListAdapter(getContext(), null, this);
         favouriteRecyclerView.setLayoutManager(linearLayoutManager);
         favouriteRecyclerView.setAdapter(favouriteListAdapter);
     }
@@ -79,9 +80,20 @@ public class FavoritesFragment extends BaseFragment implements FavouritesContrac
     }
 
     @Override
+    public void showInfoMessage(String message) {
+        favouritesLoadableView.showError(message);
+    }
+
+    @Override
     public void onDestroy() {
         // to remove view from presenter
         mPresenter.dropView();
         super.onDestroy();
+    }
+
+    // Favourite Dismiss listener
+    @Override
+    public void onFavouriteDismiss(RelaxingSong relaxingSong) {
+        mPresenter.removeFavouriteSong(relaxingSong);
     }
 }

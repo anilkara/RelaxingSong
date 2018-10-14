@@ -21,12 +21,16 @@ public interface FavouritesContract {
         void onSuccessFulFavouriteList(List<RelaxingSong> relaxingSongList);
 
         void setLoadingView();
+
+        void showInfoMessage(String message);
     }
 
     interface Presenter extends BasePresenter<FavouritesContract.View> {
         void init();
 
         void callFavouriteList();
+
+        void removeFavouriteSong(RelaxingSong relaxingSong);
     }
 
 }

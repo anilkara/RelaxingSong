@@ -19,6 +19,7 @@ public interface LibraryContract {
         void onSuccessfulLibraryService(List<LibraryResponse> libraryResponseList);
 
         void showLoadingView();
+
     }
 
     interface Presenter extends BasePresenter<LibraryContract.View> {

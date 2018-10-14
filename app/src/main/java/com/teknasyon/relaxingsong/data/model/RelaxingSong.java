@@ -15,4 +15,11 @@ public class RelaxingSong implements Serializable {
 
     @SerializedName("url")
     public String url;
+
+    @SerializedName("id")
+    public int id;
+
+    @SerializedName("isFavourite")
+    public boolean isFavourite;
+
 }

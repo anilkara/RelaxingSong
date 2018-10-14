@@ -14,8 +14,10 @@ import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.constant.BundleCodes;
 import com.teknasyon.relaxingsong.customviews.LoadableView;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
+import com.teknasyon.relaxingsong.fragments.favourites.OnFavouriteAdapterListener;
 import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
 import com.teknasyon.relaxingsong.fragments.library.adapter.LibraryListAdapter;
+import com.teknasyon.relaxingsong.fragments.library.librarydetail.adapter.LibraryDetailListAdapter;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ import butterknife.ButterKnife;
  */
 
 
-public class LibraryDetailFragment extends BaseFragment implements LibraryDetailContract.View {
+public class LibraryDetailFragment extends BaseFragment implements LibraryDetailContract.View, OnLibraryDetailAdapterListener{
 
     @BindView(R.id.rv_library_detail_list)
     RecyclerView libraryDetgailRecyclerView;
@@ -40,7 +42,7 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
     @Inject
     LibraryDetailPresenter mPresenter;
 
-    private FavouriteListAdapter favouriteListAdapter;
+    private LibraryDetailListAdapter libraryDetailListAdapter;
 
     @Nullable
     @Override
@@ -61,16 +63,28 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
     @Override
     public void onInit() {
         libraryDetailLoadableView.showLoading();
+        initListAdapter();
         if (getArguments() != null) {
             List<RelaxingSong> relaxingSongList = (List<RelaxingSong>) getArguments().getSerializable(BundleCodes.RELAXING_SONG_LIST); // sorry for that
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-            favouriteListAdapter = new FavouriteListAdapter(getContext(), relaxingSongList);
-            libraryDetgailRecyclerView.setLayoutManager(linearLayoutManager);
-            libraryDetgailRecyclerView.setAdapter(favouriteListAdapter);
-            libraryDetailLoadableView.showContent();
+            mPresenter.setLibraryDetailData(relaxingSongList);
         } else {
             libraryDetailLoadableView.showError(getString(R.string.no_detail_library_message));
         }
+
+    }
+
+    private void initListAdapter(){
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        libraryDetailListAdapter = new LibraryDetailListAdapter(getContext(), null, this);
+        libraryDetgailRecyclerView.setLayoutManager(linearLayoutManager);
+        libraryDetgailRecyclerView.setAdapter(libraryDetailListAdapter);
+        libraryDetailLoadableView.showContent();
+    }
+
+    @Override
+    public void onLoadDataToView(List<RelaxingSong> detailList) {
+        libraryDetailListAdapter.setFavouriteList(detailList);
+        libraryDetailLoadableView.showContent();
     }
 
     @Override
@@ -83,5 +97,10 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
         // to remove view from presenter
         mPresenter.dropView();
         super.onDestroy();
+    }
+
+    @Override
+    public void onFavImageClick(RelaxingSong relaxingSong) {
+        mPresenter.changedSongState(relaxingSong);
     }
 }
