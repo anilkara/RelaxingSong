@@ -1,4 +1,4 @@
-package com.teknasyon.relaxingsong.fragments.favourites.adapter;
+package com.teknasyon.relaxingsong.fragments.favorites.adapter;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
-import com.teknasyon.relaxingsong.fragments.favourites.OnFavouriteAdapterListener;
+import com.teknasyon.relaxingsong.fragments.favorites.OnFavoriteAdapterListener;
 
 import java.io.IOException;
 import java.lang.annotation.Retention;
@@ -28,14 +28,14 @@ import butterknife.ButterKnife;
  * Created by anilkara on 14.10.2018.
  */
 
-public class FavouriteListAdapter extends RecyclerView.Adapter<FavouriteListAdapter.ItemViewHolder> {
+public class FavoriteListAdapter extends RecyclerView.Adapter<FavoriteListAdapter.ItemViewHolder> {
 
     private Context context;
     private List<RelaxingSong> favouriteList;
-    private OnFavouriteAdapterListener onFavouriteAdapterListener;
+    private OnFavoriteAdapterListener onFavouriteAdapterListener;
 
 
-    public FavouriteListAdapter(Context context, List<RelaxingSong> favouriteList, OnFavouriteAdapterListener onFavouriteAdapterListener) {
+    public FavoriteListAdapter(Context context, List<RelaxingSong> favouriteList, OnFavoriteAdapterListener onFavouriteAdapterListener) {
         this.context = context;
         this.favouriteList = favouriteList;
         this.onFavouriteAdapterListener = onFavouriteAdapterListener;

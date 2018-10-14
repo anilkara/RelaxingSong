@@ -1,7 +1,6 @@
 package com.teknasyon.relaxingsong.fragments.library.librarydetail.adapter;
 
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
-import com.teknasyon.relaxingsong.fragments.favourites.OnFavouriteAdapterListener;
 import com.teknasyon.relaxingsong.fragments.library.librarydetail.OnLibraryDetailAdapterListener;
 
 import java.lang.annotation.Retention;

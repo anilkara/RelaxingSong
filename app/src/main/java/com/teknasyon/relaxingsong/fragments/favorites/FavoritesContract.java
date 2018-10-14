@@ -1,6 +1,4 @@
-package com.teknasyon.relaxingsong.fragments.favourites;
-
-import android.view.View;
+package com.teknasyon.relaxingsong.fragments.favorites;
 
 import com.teknasyon.relaxingsong.base.BaseView;
 import com.teknasyon.relaxingsong.base.BasePresenter;
@@ -12,9 +10,9 @@ import java.util.List;
  * Created by anilkara on 13.10.2018.
  */
 
-public interface FavouritesContract {
+public interface FavoritesContract {
 
-    interface View extends BaseView<FavouritesContract.Presenter> {
+    interface View extends BaseView<FavoritesContract.Presenter> {
 
         void onInit();
 
@@ -25,7 +23,7 @@ public interface FavouritesContract {
         void showInfoMessage(String message);
     }
 
-    interface Presenter extends BasePresenter<FavouritesContract.View> {
+    interface Presenter extends BasePresenter<FavoritesContract.View> {
         void init();
 
         void callFavouriteList();

@@ -1,4 +1,4 @@
-package com.teknasyon.relaxingsong.fragments.favourites;
+package com.teknasyon.relaxingsong.fragments.favorites;
 
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.base.AbstractPresenter;
@@ -21,8 +21,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 @Singleton
-public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.View>
-        implements FavouritesContract.Presenter {
+public class FavoritesPresenter extends AbstractPresenter<FavoritesContract.View>
+        implements FavoritesContract.Presenter {
 
     @Inject
     RetrofitClient retrofitClient;
@@ -31,7 +31,7 @@ public class FavouritesPresenter extends AbstractPresenter<FavouritesContract.Vi
     InformationManager informationManager;
 
     @Inject
-    FavouritesPresenter() {
+    FavoritesPresenter() {
     }
 
     private List<RelaxingSong> relaxingSongList;

@@ -4,10 +4,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.teknasyon.relaxingsong.base.BaseFragment;
-import com.teknasyon.relaxingsong.fragments.favourites.FavoritesFragment;
 import com.teknasyon.relaxingsong.fragments.manager.FragmentManager;
-import com.teknasyon.relaxingsong.util.ActivityUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,7 +48,8 @@ public class MainActivity extends DaggerAppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+        super.onBackPressed();
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             fragmentManager.showFavouritesFragment(this, null);
         }
     }

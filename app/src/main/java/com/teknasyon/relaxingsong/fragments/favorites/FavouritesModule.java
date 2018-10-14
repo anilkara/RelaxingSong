@@ -1,7 +1,6 @@
-package com.teknasyon.relaxingsong.fragments.favourites;
+package com.teknasyon.relaxingsong.fragments.favorites;
 
 import com.teknasyon.relaxingsong.dependencyinjection.FragmentScoped;
-import com.teknasyon.relaxingsong.fragments.FragmentName;
 
 import dagger.Binds;
 import dagger.Module;
@@ -21,6 +20,6 @@ public abstract class FavouritesModule {
 
     @FragmentScoped
     @Binds
-    abstract FavouritesContract.Presenter getFavoritesPresenter(FavouritesPresenter presenter);
+    abstract FavoritesContract.Presenter getFavoritesPresenter(FavoritesPresenter presenter);
 
 }

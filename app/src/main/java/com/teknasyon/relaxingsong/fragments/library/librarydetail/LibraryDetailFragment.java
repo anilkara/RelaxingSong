@@ -14,9 +14,6 @@ import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.constant.BundleCodes;
 import com.teknasyon.relaxingsong.customviews.LoadableView;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
-import com.teknasyon.relaxingsong.fragments.favourites.OnFavouriteAdapterListener;
-import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
-import com.teknasyon.relaxingsong.fragments.library.adapter.LibraryListAdapter;
 import com.teknasyon.relaxingsong.fragments.library.librarydetail.adapter.LibraryDetailListAdapter;
 
 import java.util.List;
@@ -31,7 +28,7 @@ import butterknife.ButterKnife;
  */
 
 
-public class LibraryDetailFragment extends BaseFragment implements LibraryDetailContract.View, OnLibraryDetailAdapterListener{
+public class LibraryDetailFragment extends BaseFragment implements LibraryDetailContract.View, OnLibraryDetailAdapterListener {
 
     @BindView(R.id.rv_library_detail_list)
     RecyclerView libraryDetgailRecyclerView;
@@ -73,7 +70,7 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
 
     }
 
-    private void initListAdapter(){
+    private void initListAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         libraryDetailListAdapter = new LibraryDetailListAdapter(getContext(), null, this);
         libraryDetgailRecyclerView.setLayoutManager(linearLayoutManager);

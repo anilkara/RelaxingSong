@@ -1,4 +1,4 @@
-package com.teknasyon.relaxingsong.fragments.favourites;
+package com.teknasyon.relaxingsong.fragments.favorites;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,7 +14,7 @@ import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.customviews.LoadableView;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
 import com.teknasyon.relaxingsong.dependencyinjection.ActivityScoped;
-import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
+import com.teknasyon.relaxingsong.fragments.favorites.adapter.FavoriteListAdapter;
 
 import java.util.List;
 
@@ -28,8 +28,8 @@ import butterknife.ButterKnife;
  */
 
 @ActivityScoped
-public class FavoritesFragment extends BaseFragment implements FavouritesContract.View,
-        OnFavouriteAdapterListener{
+public class FavoritesFragment extends BaseFragment implements FavoritesContract.View,
+        OnFavoriteAdapterListener {
 
     @BindView(R.id.rv_favourite_list)
     RecyclerView favouriteRecyclerView;
@@ -38,9 +38,9 @@ public class FavoritesFragment extends BaseFragment implements FavouritesContrac
     LoadableView favouritesLoadableView;
 
     @Inject
-    FavouritesPresenter mPresenter;
+    FavoritesPresenter mPresenter;
 
-    private FavouriteListAdapter favouriteListAdapter;
+    private FavoriteListAdapter favouriteListAdapter;
 
     @Nullable
     @Override
@@ -62,7 +62,7 @@ public class FavoritesFragment extends BaseFragment implements FavouritesContrac
     @Override
     public void onInit() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        favouriteListAdapter = new FavouriteListAdapter(getContext(), null, this);
+        favouriteListAdapter = new FavoriteListAdapter(getContext(), null, this);
         favouriteRecyclerView.setLayoutManager(linearLayoutManager);
         favouriteRecyclerView.setAdapter(favouriteListAdapter);
     }

@@ -2,7 +2,6 @@ package com.teknasyon.relaxingsong.fragments.library.librarydetail;
 
 import com.teknasyon.relaxingsong.base.BasePresenter;
 import com.teknasyon.relaxingsong.base.BaseView;
-import com.teknasyon.relaxingsong.data.model.LibraryResponse;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
 
 import java.util.List;

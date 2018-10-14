@@ -9,13 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
+import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.constant.BundleCodes;
 import com.teknasyon.relaxingsong.customviews.LoadableView;
 import com.teknasyon.relaxingsong.data.model.LibraryResponse;
 import com.teknasyon.relaxingsong.data.model.RelaxingSong;
-import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
 import com.teknasyon.relaxingsong.fragments.library.adapter.LibraryListAdapter;
 import com.teknasyon.relaxingsong.fragments.manager.FragmentManager;
 

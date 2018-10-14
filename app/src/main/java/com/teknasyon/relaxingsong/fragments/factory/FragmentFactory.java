@@ -5,7 +5,7 @@ import android.content.Context;
 import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.fragments.FragmentName;
-import com.teknasyon.relaxingsong.fragments.favourites.FavoritesFragment;
+import com.teknasyon.relaxingsong.fragments.favorites.FavoritesFragment;
 import com.teknasyon.relaxingsong.fragments.library.LibraryFragment;
 import com.teknasyon.relaxingsong.fragments.library.librarydetail.LibraryDetailFragment;
 
