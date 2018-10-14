@@ -12,9 +12,11 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
         FragmentName.FAVOURITE,
         FragmentName.LIBRARIES,
+        FragmentName.LIBRARY_DETAIL,
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface FragmentName {
     int FAVOURITE = 0;
     int LIBRARIES = 1;
+    int LIBRARY_DETAIL = 2;
 }

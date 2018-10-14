@@ -7,6 +7,7 @@ import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.fragments.FragmentName;
 import com.teknasyon.relaxingsong.fragments.favourites.FavoritesFragment;
 import com.teknasyon.relaxingsong.fragments.library.LibraryFragment;
+import com.teknasyon.relaxingsong.fragments.library.librarydetail.LibraryDetailFragment;
 
 /**
  * Created by anilkara on 13.10.2018.
@@ -30,6 +31,10 @@ public class FragmentFactory implements IFragmentFactory {
 
             case FragmentName.LIBRARIES:
                 baseFragment = new LibraryFragment();
+                break;
+
+            case FragmentName.LIBRARY_DETAIL:
+                baseFragment = new LibraryDetailFragment();
                 break;
 
             default:

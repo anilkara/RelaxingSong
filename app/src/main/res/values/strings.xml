@@ -5,6 +5,6 @@
     <string name="favourites_text">Favoriler</string>
     <string name="library_text">Kitaplık</string>
     <string name="content_description">content_description</string>
-
+    <string name="no_detail_library_message">Detay bulunamadı!</string>no_detail_library_message
 
 </resources>

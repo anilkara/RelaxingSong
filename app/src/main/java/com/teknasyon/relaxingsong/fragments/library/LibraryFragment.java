@@ -11,11 +11,15 @@ import android.view.ViewGroup;
 
 import com.teknasyon.relaxingsong.base.BaseFragment;
 import com.teknasyon.relaxingsong.R;
+import com.teknasyon.relaxingsong.constant.BundleCodes;
 import com.teknasyon.relaxingsong.customviews.LoadableView;
 import com.teknasyon.relaxingsong.data.model.LibraryResponse;
+import com.teknasyon.relaxingsong.data.model.RelaxingSong;
 import com.teknasyon.relaxingsong.fragments.favourites.adapter.FavouriteListAdapter;
 import com.teknasyon.relaxingsong.fragments.library.adapter.LibraryListAdapter;
+import com.teknasyon.relaxingsong.fragments.manager.FragmentManager;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,8 +31,7 @@ import butterknife.ButterKnife;
  * Created by anilkara on 13.10.2018.
  */
 
-
-public class LibraryFragment extends BaseFragment implements LibraryContract.View{
+public class LibraryFragment extends BaseFragment implements LibraryContract.View, OnLibraryAdapterListener {
 
     @BindView(R.id.rv_library_list)
     RecyclerView libraryRecyclerView;
@@ -61,7 +64,7 @@ public class LibraryFragment extends BaseFragment implements LibraryContract.Vie
     @Override
     public void onInit() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        libraryListAdapter = new LibraryListAdapter(getContext(), null);
+        libraryListAdapter = new LibraryListAdapter(getContext(), null, this);
         libraryRecyclerView.setLayoutManager(linearLayoutManager);
         libraryRecyclerView.setAdapter(libraryListAdapter);
     }
@@ -82,5 +85,15 @@ public class LibraryFragment extends BaseFragment implements LibraryContract.Vie
         // to remove view from presenter
         mPresenter.dropView();
         super.onDestroy();
+    }
+
+    // adapter item click listener function
+    @Override
+    public void onItemClicked(List<RelaxingSong> relaxingSongList) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(BundleCodes.RELAXING_SONG_LIST, (Serializable) relaxingSongList);
+        FragmentManager fragmentManager = new FragmentManager();
+        fragmentManager.showLibraryDetailFragment(getActivity(), bundle);
+
     }
 }

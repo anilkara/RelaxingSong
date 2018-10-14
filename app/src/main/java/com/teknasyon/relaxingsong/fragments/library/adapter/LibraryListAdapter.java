@@ -2,6 +2,7 @@ package com.teknasyon.relaxingsong.fragments.library.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.teknasyon.relaxingsong.R;
 import com.teknasyon.relaxingsong.data.model.LibraryResponse;
+import com.teknasyon.relaxingsong.fragments.library.OnLibraryAdapterListener;
 
 import java.util.List;
 
@@ -26,10 +28,12 @@ public class LibraryListAdapter extends RecyclerView.Adapter<LibraryListAdapter.
 
     private Context context;
     private List<LibraryResponse> libraryResponseList;
+    private OnLibraryAdapterListener onLibraryAdapterListener;
 
-    public LibraryListAdapter(Context context, List<LibraryResponse> libraryResponseList) {
+    public LibraryListAdapter(Context context, List<LibraryResponse> libraryResponseList, OnLibraryAdapterListener onLibraryAdapterListener) {
         this.context = context;
         this.libraryResponseList = libraryResponseList;
+        this.onLibraryAdapterListener = onLibraryAdapterListener;
     }
 
     @NonNull
@@ -44,6 +48,7 @@ public class LibraryListAdapter extends RecyclerView.Adapter<LibraryListAdapter.
         LibraryResponse libraryResponse = libraryResponseList.get(i);
         holder.setItemName(libraryResponse.categoryName);
         holder.setBackground(libraryResponse.backgroundUrl);
+        holder.setItemClickAction(libraryResponse);
     }
 
     @Override
@@ -64,6 +69,9 @@ public class LibraryListAdapter extends RecyclerView.Adapter<LibraryListAdapter.
         @BindView(R.id.iv_category)
         ImageView categoryImageView;
 
+        @BindView(R.id.cv_main_layout)
+        CardView cardView;
+
         ItemViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -81,6 +89,15 @@ public class LibraryListAdapter extends RecyclerView.Adapter<LibraryListAdapter.
                     .placeholder(R.drawable.bg_waiting_placeholder)
                     .error(R.drawable.bg_error_placeholder)
                     .into(categoryImageView);
+        }
+
+        private void setItemClickAction(final LibraryResponse libraryResponse){
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onLibraryAdapterListener.onItemClicked(libraryResponse.relaxingSongList);
+                }
+            });
         }
     }
 }

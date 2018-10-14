@@ -36,12 +36,12 @@ public class MainActivity extends DaggerAppCompatActivity {
 
     @OnClick(R.id.tv_my_favourites)
     public void clickFavouritesText() {
-        fragmentManager.showFavouritesFragment(this);
+        fragmentManager.showFavouritesFragment(this, null);
     }
 
     @OnClick(R.id.tv_my_libraries)
     public void clickLibrariesText() {
-        fragmentManager.showLibraryFragment(this);
+        fragmentManager.showLibraryFragment(this, null);
     }
 
 }
